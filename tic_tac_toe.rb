@@ -15,7 +15,7 @@ class Game
 2. To make a move, player should enter 2 numbers: row number and column number separated with a space.
 3. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.\n"
     puts 'LET THE BATTLE BEGIN!'
-    # until check_win
+    # until status_check
     print_board
     puts "#{@whose_turn ? @players[0] : @players[1]}, make your move(#{@whose_turn ? 'x' : 'o'}):"
     move = gets.chomp.split(' ').map(&:to_i)
@@ -23,7 +23,7 @@ class Game
     # end
   end
 
-  # def check_win
+  # def status_check
   #   if all_equal?(@board[0]) || all_equal?(@board[1]) || all_equal?(@board[2]) || all_equal?(@board.transpose[0]) || all_equal?(@board.transpose[1]) || all_equal?(@board.transpose[2]) || all_equal?(@board[0][0], @board[1][1], @board[2][2]) || all_equal?(@board[0][2], @board[1][1], @board[2][0])
   #     @result = "#{}"
   #     elsif

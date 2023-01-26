@@ -12,10 +12,7 @@ class Game
   end
 
   def start_game
-    puts "Rules:\n1. Players take turns, the first plays with crosses(x), second plays with noughts(o)."
-    puts '2. To make a move, player should enter 2 numbers: row number and column number separated with a space.'
-    puts '3. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.'
-    puts 'LET THE BATTLE BEGIN!'
+    print_intro
     print_board
     while @result.nil?
       puts "#{@whose_turn ? @players[0] : @players[1]}, make your move(#{@whose_turn ? 'x' : 'o'}):"
@@ -50,6 +47,13 @@ class Game
         next
       end
     end
+  end
+
+  def print_intro
+    puts "Rules:\n1. Players take turns, the first plays with crosses(x), second plays with noughts(o)."
+    puts '2. To make a move, player should enter 2 numbers: row number and column number separated with a space.'
+    puts '3. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.'
+    puts 'LET THE BATTLE BEGIN!'
   end
 
   def print_board

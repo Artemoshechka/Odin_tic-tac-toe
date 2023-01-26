@@ -19,9 +19,7 @@ class Game
     print_board
     while @result.nil?
       puts "#{@whose_turn ? @players[0] : @players[1]}, make your move(#{@whose_turn ? 'x' : 'o'}):"
-      make_move
-      clear and print_board
-      status_check
+      make_move and clear and print_board and status_check
       @whose_turn = !@whose_turn
     end
     puts @result

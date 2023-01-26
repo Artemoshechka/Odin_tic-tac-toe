@@ -19,8 +19,8 @@ class Game
     print_board
     while @result.nil?
       puts "#{@whose_turn ? @players[0] : @players[1]}, make your move(#{@whose_turn ? 'x' : 'o'}):"
-      move = gets.chomp.split(' ').map(&:to_i)
-      make_move(move[0], move[1]) and clear and print_board
+      make_move
+      clear and print_board
       status_check
       @whose_turn = !@whose_turn
     end
@@ -35,8 +35,23 @@ class Game
     end
   end
 
-  def make_move(row_number, col_number)
-    @board[row_number][col_number] = @whose_turn ? ' x ' : ' o '
+  def make_move
+    loop do
+      move = gets.chomp
+      if move.match?(/[0-2] [0-2]/)
+        move = move.split(' ').map(&:to_i)
+        if @board[move[0]][move[1]] == ' - '
+          @board[move[0]][move[1]] = @whose_turn ? ' x ' : ' o '
+          return
+        else
+          warn "You can't make that move, because that square is already taken. Try again."
+          next
+        end
+      else
+        warn 'Wrong input(you should enter 2 numbers: row number and column number separated with a space.). Try again.'
+        next
+      end
+    end
   end
 
   def print_board
